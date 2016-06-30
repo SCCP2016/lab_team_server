@@ -1,0 +1,24 @@
+ユーザー関係
+post /user/new
+ユーザーを登録する。
+ユーザー名、メールアドレス、パスワードをjson形式で送る
+
+post /login
+ログインをする
+ユーザー名、パスワードをjson形式で送る。
+
+get /logout
+      ログアウトする
+           パラメーターはユーザーID
+
+  get /user/me
+       自分を表示
+
+ get /user/:id
+      ユーザーIDのユーザーの詳細をみる
+
+get /user/users
+     ユーザー一覧の取得
+
+get /user/delete/:id
+     ユーザーの削除
