@@ -1,5 +1,2 @@
-require 'bundler'
-Bundler.require
-
-require './app'
-run Sinatra::Application
+require_relative './src/mainApp'
+run MainApp

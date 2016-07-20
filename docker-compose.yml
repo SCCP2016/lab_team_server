@@ -1,0 +1,13 @@
+db:
+  image: postgres
+  expose:
+    - "5432"
+
+web:
+  build: .
+  volumes:
+    - '.:/app/user'
+  ports:
+    - '4567:4567'
+  links:
+    - db
