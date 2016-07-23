@@ -1,0 +1,380 @@
+have_library: checking for main() in -lpq... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return !p; }
+/* end */
+
+--------------------
+
+have_header: checking for libpq-fe.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <libpq-fe.h>
+/* end */
+
+--------------------
+
+have_header: checking for libpq/libpq-fs.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <libpq/libpq-fs.h>
+/* end */
+
+--------------------
+
+have_header: checking for postgres.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG  conftest.c -o conftest.i"
+In file included from /usr/include/postgresql/9.4/server/postgres.h:47:0,
+                 from conftest.c:3:
+/usr/include/postgresql/9.4/server/c.h:107:0: warning: "_" redefined
+ #define _(x) gettext(x)
+ ^
+In file included from /usr/local/include/ruby-2.3.0/ruby/ruby.h:36:0,
+                 from /usr/local/include/ruby-2.3.0/ruby.h:33,
+                 from conftest.c:1:
+/usr/local/include/ruby-2.3.0/ruby/defines.h:83:0: note: this is the location of the previous definition
+ # define _(args) args
+ ^
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <postgres.h>
+/* end */
+
+--------------------
+
+have_header: checking for mb/pg_wchar.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG  conftest.c -o conftest.i"
+In file included from /usr/include/postgresql/9.4/server/postgres.h:47:0,
+                 from conftest.c:3:
+/usr/include/postgresql/9.4/server/c.h:107:0: warning: "_" redefined
+ #define _(x) gettext(x)
+ ^
+In file included from /usr/local/include/ruby-2.3.0/ruby/ruby.h:36:0,
+                 from /usr/local/include/ruby-2.3.0/ruby.h:33,
+                 from conftest.c:1:
+/usr/local/include/ruby-2.3.0/ruby/defines.h:83:0: note: this is the location of the previous definition
+ # define _(args) args
+ ^
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <postgres.h>
+4: #include <mb/pg_wchar.h>
+/* end */
+
+--------------------
+
+have_header: checking for catalog/pg_type.h... -------------------- yes
+
+"gcc -E -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG  conftest.c -o conftest.i"
+In file included from /usr/include/postgresql/9.4/server/postgres.h:47:0,
+                 from conftest.c:3:
+/usr/include/postgresql/9.4/server/c.h:107:0: warning: "_" redefined
+ #define _(x) gettext(x)
+ ^
+In file included from /usr/local/include/ruby-2.3.0/ruby/ruby.h:36:0,
+                 from /usr/local/include/ruby-2.3.0/ruby.h:33,
+                 from conftest.c:1:
+/usr/local/include/ruby-2.3.0/ruby/defines.h:83:0: note: this is the location of the previous definition
+ # define _(args) args
+ ^
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <postgres.h>
+4: #include <catalog/pg_type.h>
+/* end */
+
+--------------------
+
+have_func: checking for localtime_r()... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:13:57: error: 'localtime_r' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))localtime_r; return !p; }
+                                                         ^
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))localtime_r; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void localtime_r();
+14: int t(void) { localtime_r(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for gmtime_r()... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:13:57: error: 'gmtime_r' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))gmtime_r; return !p; }
+                                                         ^
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))gmtime_r; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void gmtime_r();
+14: int t(void) { gmtime_r(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for PQsetClientEncoding()... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:13:57: error: 'PQsetClientEncoding' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))PQsetClientEncoding; return !p; }
+                                                         ^
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQsetClientEncoding; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void PQsetClientEncoding();
+14: int t(void) { PQsetClientEncoding(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for pg_encoding_to_char()... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:13:57: error: 'pg_encoding_to_char' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))pg_encoding_to_char; return !p; }
+                                                         ^
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))pg_encoding_to_char; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void pg_encoding_to_char();
+14: int t(void) { pg_encoding_to_char(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for PQfreemem()... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+conftest.c: In function 't':
+conftest.c:13:57: error: 'PQfreemem' undeclared (first use in this function)
+ int t(void) { void ((*volatile p)()); p = (void ((*)()))PQfreemem; return !p; }
+                                                         ^
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))PQfreemem; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void PQfreemem();
+14: int t(void) { PQfreemem(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for rb_thread_fd_select()... -------------------- yes
+
+"gcc -o conftest -I/usr/local/include/ruby-2.3.0/x86_64-linux -I/usr/local/include/ruby-2.3.0/ruby/backward -I/usr/local/include/ruby-2.3.0 -I. -I/usr/include/postgresql -I/usr/include/postgresql/9.4/server     -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration -Wdeprecated-declarations -Wno-packed-bitfield-compat -DHAVE_NO_DATETIME_NEWBANG conftest.c  -L. -L/usr/local/lib -Wl,-R/usr/local/lib -L/usr/lib/x86_64-linux-gnu -Wl,-R/usr/lib/x86_64-linux-gnu -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lpq  -Wl,-R/usr/local/lib -L/usr/local/lib -lruby-static -lpq  -lpthread -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))rb_thread_fd_select; return !p; }
+/* end */
+
+--------------------
+

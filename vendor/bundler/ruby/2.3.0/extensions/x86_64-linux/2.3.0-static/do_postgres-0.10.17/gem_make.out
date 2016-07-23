@@ -1,0 +1,134 @@
+current directory: /app/user/vendor/bundler/ruby/2.3.0/gems/do_postgres-0.10.17/ext/do_postgres
+/usr/local/bin/ruby -r ./siteconf20160714-1-1aszoyg.rb extconf.rb
+checking for main() in -lpq... yes
+checking for libpq-fe.h... yes
+checking for libpq/libpq-fs.h... yes
+checking for postgres.h... yes
+checking for mb/pg_wchar.h... yes
+checking for catalog/pg_type.h... yes
+checking for localtime_r()... yes
+checking for gmtime_r()... yes
+checking for PQsetClientEncoding()... yes
+checking for pg_encoding_to_char()... yes
+checking for PQfreemem()... yes
+checking for rb_thread_fd_select()... yes
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /app/user/vendor/bundler/ruby/2.3.0/extensions/x86_64-linux/2.3.0-static/do_postgres-0.10.17/mkmf.log
+
+current directory: /app/user/vendor/bundler/ruby/2.3.0/gems/do_postgres-0.10.17/ext/do_postgres
+make "DESTDIR=" clean
+
+current directory: /app/user/vendor/bundler/ruby/2.3.0/gems/do_postgres-0.10.17/ext/do_postgres
+make "DESTDIR="
+compiling do_common.c
+compiling do_postgres.c
+do_postgres.c: In function 'do_postgres_cConnection_dispose':
+do_postgres.c:136:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   PGconn *db = DATA_PTR(connection_container);
+   ^
+do_postgres.c: In function 'do_postgres_cConnection_quote_string':
+do_postgres.c:159:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   char *escaped;
+   ^
+do_postgres.c:167:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   long quoted_length;
+   ^
+do_postgres.c: In function 'do_postgres_cCommand_execute_async':
+do_postgres.c:263:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   struct timeval start;
+   ^
+do_postgres.c:287:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   int socket_fd = PQsocket(db);
+   ^
+do_postgres.c: In function 'do_postgres_cConnection_initialize':
+do_postgres.c:323:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_host = rb_funcall(uri, rb_intern("host"), 0);
+   ^
+do_postgres.c:329:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_user = rb_funcall(uri, rb_intern("user"), 0);
+   ^
+do_postgres.c:335:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_password = rb_funcall(uri, rb_intern("password"), 0);
+   ^
+do_postgres.c:341:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_path = rb_funcall(uri, rb_intern("path"), 0);
+   ^
+do_postgres.c:347:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_port = rb_funcall(uri, rb_intern("port"), 0);
+   ^
+do_postgres.c:355:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_query = rb_funcall(uri, rb_intern("query"), 0);
+   ^
+do_postgres.c:359:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   const char *encoding = data_objects_get_uri_option(r_query, "encoding");
+   ^
+do_postgres.c:371:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   PGconn *db = NULL;
+   ^
+do_postgres.c: In function 'do_postgres_full_connect':
+do_postgres.c:386:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_user;
+   ^
+do_postgres.c:393:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_password;
+   ^
+do_postgres.c:400:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_port;
+   ^
+do_postgres.c:407:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_path;
+   ^
+do_postgres.c:420:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE r_query = rb_iv_get(self, "@query");
+   ^
+do_postgres.c:437:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   PGresult *result;
+   ^
+do_postgres.c:459:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   const char *backslash_off = "SET backslash_quote = off";
+   ^
+do_postgres.c:493:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE encoding = rb_iv_get(self, "@encoding");
+   ^
+do_postgres.c: In function 'do_postgres_cCommand_execute_non_query':
+do_postgres.c:530:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE query = data_objects_build_query_from_args(self, argc, argv);
+   ^
+do_postgres.c:538:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE affected_rows = Qnil;
+   ^
+do_postgres.c: In function 'do_postgres_cCommand_execute_reader':
+do_postgres.c:571:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE query = data_objects_build_query_from_args(self, argc, argv);
+   ^
+do_postgres.c:580:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   int field_count = PQnfields(response);
+   ^
+do_postgres.c:589:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE field_names = rb_ary_new();
+   ^
+do_postgres.c:603:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   int i;
+   ^
+do_postgres.c: In function 'do_postgres_cReader_close':
+do_postgres.c:626:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   PGresult *reader = DATA_PTR(reader_container);
+   ^
+do_postgres.c: In function 'do_postgres_cReader_next':
+do_postgres.c:648:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   PGresult *pg_reader = DATA_PTR(reader);
+   ^
+do_postgres.c:662:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   int enc = -1;
+   ^
+do_postgres.c:671:3: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+   VALUE array = rb_ary_new();
+   ^
+linking shared-object do_postgres/do_postgres.so
+
+current directory: /app/user/vendor/bundler/ruby/2.3.0/gems/do_postgres-0.10.17/ext/do_postgres
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 do_postgres.so ./.gem.20160714-1-557i0o/do_postgres
