@@ -25,6 +25,3 @@ get /event/users
 
 
 
-
-
-
