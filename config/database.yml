@@ -1,4 +1,0 @@
-development: &default
-  username: postgres
-  host: <%= ENV['DATABASE_HOST'] %>
-  adapter: postgresql%>
