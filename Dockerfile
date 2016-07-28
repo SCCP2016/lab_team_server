@@ -16,4 +16,4 @@ WORKDIR /app/user
 RUN bundle install
 
 EXPOSE 4567
-CMD ["foreman", "start", "-d", "/app/user", "-f", "/app/user/Procfile", "-p", "4567"]
+CMD ["foreman", "start", "-d", "/app/user", "-f", "/app/user/Procfile","-p", "4567"]
