@@ -1,16 +1,17 @@
 require 'data_mapper'
-require_relative 'event'
+require_relative 'user'
 
-class User
+class Event
   include DataMapper::Resource
 
   property :id, Serial
   property :name, String
-  property :mail, String
-  property :pass, String
+  property :start, String
+  property :place, String
+  property :motivation, Text
   property :created_at, DateTime
 
-  has n, :events
+  belongs_to :user
 end
 
 DataMapper.finalize

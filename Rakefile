@@ -1,8 +1,8 @@
 require 'dm-core'
 require 'dm-migrations'
 # Model Classes
-require_relative 'src/word'
-require_relative 'src/user'
+require_relative 'src/models'
+
 
 task 'db:migrate' do
   DataMapper::Logger.new($stdout, :debug)
