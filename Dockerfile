@@ -16,4 +16,5 @@ WORKDIR /app/user
 RUN bundle install
 
 EXPOSE 4567
-#CMD ["foreman", "start", "-d", "/app/user", "-f", "/app/user/Procfile"]
+ENV PORT 4567
+CMD ["foreman", "start", "-d", "/app/user", "-f", "/app/user/Procfile"]

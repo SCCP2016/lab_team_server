@@ -5,9 +5,9 @@ require 'data_mapper'
 require 'json'
 require_relative 'models'
 DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, 'postgres://postgres:@db')
+DataMapper.setup(:default, (ENV['DATABASE_URL'] ||= "postgres://postgres:@db"))
 
-# Sinatra Main controller
+                 # Sinatra Main controller
 class MainApp < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
@@ -135,7 +135,7 @@ class MainApp < Sinatra::Base
   
   get '/event/events' do
     data = []
-    event = Event.all.map do |e|
+    events = Event.all.map do |e|
       owner = User.all(name: e.owner).first      
       event = {
         id: e.id,
@@ -160,7 +160,7 @@ class MainApp < Sinatra::Base
 
   get '/event/:kind/events' do
     data = []
-    event = Event.all(kind: params[:kind]).map do |e|
+    events = Event.all(kind: params[:kind]).map do |e|
       owner = User.all(name: e.owner).first      
       event = {
         id: e.id,
@@ -182,6 +182,52 @@ class MainApp < Sinatra::Base
 
     res.to_json
   end
+  
+  post '/event/attend' do
+    params = JSON.parse(request.body.read)
+    u = User.all(id: params["user_id"]).first
+    e = Event.all(id: Event.all(name: params["event_name"],owner: params["owner"]).first.id).first
+    
+    if(EventUser.all(user: u,event: e).nil?)
+      event_user = EventUser.create(user: u,event: e)
+      
+      res = {
+        status: 200,
+        message: "ok",
+        data: {
+        user_id: event_user.user_id,
+        event_id: event_user.event_id
+        }
+      }
+    else
+      res = {
+      status: 200,
+      message: "Already Exist"
+      }
+    end
+    res.to_json
+  end
+  
+  get '/event/users' do
+    data = []
+    event_user = EventUser.all(event_id: params["id"]).map do |eu|
+      info = {
+        user: eu.user
+      }
+
+      data.push(info)
+    end
+
+    res = {
+      status: 200,
+      message: "ok",
+      event_id: params["id"],
+      data: data
+    }
+    p res
+    res.to_json
+  end
+
   
   get '/event/:id' do
     id = params[:id]
@@ -207,21 +253,11 @@ class MainApp < Sinatra::Base
         }
       }
     end
+    p res
     res.to_json
   end
-
-  post '/test/relation' do
-    
-    params = JSON.parse(request.body.read)
-    user_id = User.all(name: params["user_name"]).first.id
-    event_id = Event.all(name: params["event_name"]).first.id
-    
-    u = User.all(id: user_id).first
-    e = Event.all(id: event_id).first
-
-    EventUser.create(user: u,event: e)
-  end
-
+  
+  
   get '/test/tests' do
     p EventUser.first
   end
