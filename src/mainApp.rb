@@ -114,7 +114,7 @@ class MainApp < Sinatra::Base
 
   post '/users/update' do
     params = JSON.parse(request.body.read)
-    user = User.all(id: params["id"])
+    user = User.all(id: params["id"]).first
 
     if (!params["pass"].nil?)
       user.pass = params["pass"]
