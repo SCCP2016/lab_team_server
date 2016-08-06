@@ -1,24 +1,29 @@
 ユーザー関係
-post /user/new
-ユーザーを登録する。
-ユーザー名、メールアドレス、パスワードをjson形式で送る
+post /users/new
+     ユーザーを登録する。
+     ユーザー名、メールアドレス、パスワードをjson形式で送る
 
 post /login
-ログインをする
-ユーザー名、パスワードをjson形式で送る。
+     ログインをする
+     ユーザー名、パスワードをjson形式で送る。
 
 get /logout
-      ログアウトする
-           パラメーターはユーザーID
+     ログアウトする
+     パラメーターはユーザーID
 
-  get /user/me
-       自分を表示
+get /users/me
+     自分を表示
 
- get /user/:id
-      ユーザーIDのユーザーの詳細をみる
+get /users/:id
+     ユーザーIDのユーザーの詳細をみる
 
-get /user/users
+get /users
      ユーザー一覧の取得
 
-get /user/delete/:id
+get /users/delete/:id
      ユーザーの削除
+
+post /users/update
+     ユーザーのレコード更新
+     更新したい情報を送り、レコードを更新
+     更新された後の情報を返す

@@ -1,4 +1,4 @@
-post /event/new
+post /events/new
 大会を開催する
 送る情報  大会の情報（大会名、ボードゲームの種類、主催者、日時、場所、モチベーション）
 返される情報 なし
@@ -8,22 +8,26 @@ post /user/renew
 送る情報  ユーザーID、ボードゲーム名、モチベーション
 返される情報  なし
 
-get /event/:kind/events
+get /events/
+大会の一覧を表示
+返される情報  参加可能な大会のIDと大会名（最新の大会をcnt分だけ返す）
+
+get /events/:kind
 ボードゲーム種類を選択し、大会の一覧を表示
 送る情報  ボードゲームの種類、ユーザーのモチベーション
 返される情報  参加可能な大会のIDと大会名（最新の大会をcnt分だけ返す）
 
-get /event/:id
+get /events/:id
 指定したイベントの詳細を表示
 送る情報  選択した大会のID
 返される情報  大会の情報
 
-post /event/attend
+post /events/attend
 大会に参加する
 送る情報  ユーザーID、大会名	
 返される情報  なし
 
-get /event/users
+get /events/users
 大会参加者の一覧を表示
 送る情報  大会のID
 返される情報  参加予定のユーザーID、ユーザー名

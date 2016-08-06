@@ -7,6 +7,7 @@ class User
   property :name, String
   property :mail, String
   property :pass, String
+  property :motivation, Integer
   property :created_at, DateTime
   
   has n, :events,:through => Resource
