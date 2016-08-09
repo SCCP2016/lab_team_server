@@ -1,5 +1,7 @@
 # coding: utf-8
+require 'sinatra'
 require 'sinatra/base'
+require 'sinatra/cookies'
 require 'sinatra/reloader'
 require 'data_mapper'
 require 'json'
@@ -12,19 +14,37 @@ class MainApp < Sinatra::Base
   configure :development do
     register Sinatra::Reloader
   end
-  
+
+  use Rack::Session::Cookie, :key => 'rack.session',
+      :expire_after => 3600,
+      :secret => Digest::SHA256.hexdigest(rand.to_s)
+
   get '/' do
-    "HELLO"
+    welcome
+  end
+  #API USER ----------------------------------------------------
+
+  post '/login' do 
+      params = JSON.parse(request.body.read)
+      if(User.all(name: params["name"], pass: params["pass"]).first.nil?)
+        "not registered"
+      else
+        session[:name] = params["name"]
+      end
   end
 
-  #API USER ----------------------------------------------------
+  get '/logout' do
+    session[:name] = nil
+  end
+  
   get '/users' do
     dates = []
     user = User.all.each do |u|
       user_info = {
         id: u.id,
         name: u.name,
-        mail: u.mail
+        mail: u.mail,
+        motivation: u.motivation
       }
       dates.push(user_info)
     end
@@ -59,7 +79,27 @@ class MainApp < Sinatra::Base
 
     res.to_json
   end
-
+  
+  get '/users/me' do
+    if(!User.all(name: session[:name]).first.nil?)
+      u = User.all(name: session[:name]).first
+      res = {
+        status: 200,
+        message: "ok",
+        data: {
+          id: u.id,
+          name: u.name,
+          mail: u.mail
+        }
+      }
+    else
+      res = {
+        status: 200,
+        message: "no"
+      }
+    end
+    res.to_json
+  end
   
   get '/users/:id' do
     id = params[:id]
@@ -114,7 +154,7 @@ class MainApp < Sinatra::Base
 
   post '/users/update' do
     params = JSON.parse(request.body.read)
-    user = User.all(id: params["id"]).first
+    user = User.all(name: session["name"]).first
 
     if (!params["pass"].nil?)
       user.pass = params["pass"]
@@ -166,8 +206,8 @@ class MainApp < Sinatra::Base
 
   post '/events/new' do
     params = JSON.parse(request.body.read)    
-    if(Event.all(name: params["name"],owner: params["owner"]).first.nil?)
-      event = Event.create(name: params["name"],kind: parms["kind"], owner: params["owner"], start: params["start"], stop: params["stop"],place: params["place"], motivation: params["motivation"])
+    if(Event.all(name: params["name"],owner: session["name"]).first.nil?)
+      event = Event.create(name: params["name"],kind: parms["kind"], owner: session["name"], start: params["start"], stop: params["stop"],place: params["place"], motivation: params["motivation"])
       res = {
         status: 200,
         message: "Created",
@@ -212,10 +252,10 @@ class MainApp < Sinatra::Base
   
   post '/events/attend' do
     params = JSON.parse(request.body.read)
-    u = User.all(id: params["user_id"]).first
+    u = User.all(name: session[:name]).first
     e = Event.all(id: Event.all(name: params["event_name"],owner: params["owner"]).first.id).first
     
-    if(EventUser.all(user: u,event: e).nil?)
+    if(EventUser.all(user: u,event: e).first.nil?)
       event_user = EventUser.create(user: u,event: e)
       
       res = {
@@ -235,9 +275,9 @@ class MainApp < Sinatra::Base
     res.to_json
   end
   
-  get '/events/users' do
+  get '/events/users/:id' do
     data = []
-    event_user = EventUser.all(event_id: params["id"]).map do |eu|
+    event_user = EventUser.all(event_id: params[:id]).map do |eu|
       info = {
         user: eu.user
       }
@@ -323,13 +363,4 @@ end
 
 
 =begin  
-  post '/login' do
-    params = JSON.parse(request.body.read)
-    if(User.all(name: params["name"], pass: params["pass"]).first.nil?)
-      "not registered"
-    else
-      session_start!
-      session[:name] = params[:name]
-    end
-  end
 =end
